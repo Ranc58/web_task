@@ -14,7 +14,7 @@ class CreateTaskSerializer(serializers.ModelSerializer):
 class TaskSerializer(serializers.ModelSerializer):
     create_time = serializers.DateTimeField(format=settings.TIME_FORMAT)
     start_time = serializers.DateTimeField(format=settings.TIME_FORMAT)
-    time_to_execute = serializers.DateTimeField(format=settings.TIME_FORMAT)
+    time_to_execute = serializers.DateTimeField(source='exec_time', format=settings.TIME_FORMAT)
 
     class Meta:
         model = Task

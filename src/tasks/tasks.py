@@ -14,5 +14,5 @@ def task_for_task(id):
     task.start_time = datetime.now(tz=timezone.utc).time()
     task.save()
     time.sleep(random.randint(0, 10))
-    task.time_to_execute = datetime.now(tz=timezone.utc).time()
+    task.exec_time = datetime.now(tz=timezone.utc).time()
     task.save()

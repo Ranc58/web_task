@@ -9,7 +9,7 @@ class TaskFactory(factory.django.DjangoModelFactory):
     status = Task.QUIUE
     create_time = datetime.now()
     start_time = None
-    time_to_execute = None
+    exec_time = None
 
     class Meta:
         model = 'tasks.Task'
