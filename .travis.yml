@@ -29,4 +29,4 @@ install:
   - python3 src/manage.py migrate
 
 script:
-  - python3 src/manage.py test
+  - python3 src/manage.py test src
