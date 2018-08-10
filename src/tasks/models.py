@@ -18,3 +18,10 @@ class Task(models.Model):
     create_time = models.DateTimeField(verbose_name=_('Created'), auto_now_add=True)
     start_time = models.DateTimeField(verbose_name=_('Started'), null=True, blank=True, default=None)
     time_to_execute = models.DateTimeField(verbose_name=_('Executed'), null=True, blank=True, default=None)
+
+    def save(self, *args, **kwargs):
+        if self.time_to_execute:
+            self.status = self.COMPLETED
+        elif self.start_time:
+            self.status = self.RUN
+        super(Task, self).save(*args, **kwargs)

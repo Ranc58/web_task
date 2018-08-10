@@ -1,7 +1,11 @@
 import json
+from unittest import mock
+from unittest.mock import Mock
 
+from django.db.models.query import QuerySet
 from rest_framework import status
 from rest_framework.test import APITestCase
+
 from .models import Task
 from .factories import TaskFactory
 
@@ -11,7 +15,8 @@ class TestTaskHandler(APITestCase):
     def setUp(self):
         self.task_url = '/a/v1/tasks/'
 
-    def test_create_task(self):
+    @mock.patch.object(QuerySet, 'get', return_value=Mock())
+    def test_create_task(self, mock_task):
         response = self.client.post(self.task_url)
         data = json.loads(response.content.decode())
         created_task_from_db = Task.objects.get(id=data['id'])

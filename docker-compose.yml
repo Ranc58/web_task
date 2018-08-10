@@ -1,13 +1,32 @@
 version: '3'
 services:
+
   postgres:
     restart: always
     image: postgres
     ports:
       - "5432:5432"
     env_file:
-      - 'environ.env'
+      - env/.env
     volumes:
       - ./postgres/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
       - ./postgres/pgdata/data:/var/lib/postgresql/data
       - ./env:/env
+
+  redis:
+    restart: always
+    image: redis:latest
+    ports:
+     - '6379:6379'
+
+
+  app:
+    build: .
+    depends_on:
+      - postgres
+    env_file:
+      - env/.env
+    ports:
+      - "8000:8000"
+    links:
+      - redis
