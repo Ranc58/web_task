@@ -23,6 +23,7 @@ before_install:
   - psql -U postgres -c "CREATE DATABASE $DB_NAME OWNER $DB_USER"
   - psql -U postgres -c "ALTER ROLE $DB_USER CREATEDB;"
   - pip3 install -r src/requirements.txt
+  - cp env/.env src/.env
   - python3 src/manage.py migrate
 
 script:
