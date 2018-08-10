@@ -5,7 +5,7 @@ from tasks.views import TaskView
 
 
 router = DefaultRouter()
-router.register(r'tasks', TaskView, base_name='task')
+router.register(r'a/v1/tasks', TaskView, base_name='task')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
