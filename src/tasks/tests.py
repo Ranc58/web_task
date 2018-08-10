@@ -34,5 +34,5 @@ class TestTaskHandler(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             data['create_time'],
-            task.create_time.strftime("%Y-%m-%dT%H:%M:%S")
+            task.create_time.strftime("%H:%M:%S")
         )

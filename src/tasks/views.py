@@ -8,16 +8,15 @@ from .serializers import TaskSerializer, CreateTaskSerializer
 
 
 class TaskView(CreateModelMixin, RetrieveModelMixin, GenericViewSet):
-    serializer_class = TaskSerializer
+    serializer_class = CreateTaskSerializer
     queryset = Task.objects.all()
 
     def create(self, request, *args, **kwargs):
         task = Task.objects.create()
-        serializer = CreateTaskSerializer(task)
         task_for_task.delay(task.id)
-        return Response(serializer.data, status=201)
+        return Response({'id': task.id}, status=201)
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
-        serializer = self.get_serializer(instance)
+        serializer = TaskSerializer(instance)
         return Response(serializer.data, status=200)

@@ -57,8 +57,7 @@ ROOT_URLCONF = 'web_task.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -126,8 +125,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+APPEND_SLASH = True
 
-DATETIME_FORMAT = '%Y-%m-%dT%H:%M:%S'
+TIME_FORMAT = '%H:%M:%S'
 
 CELERY_BROKER_URL = 'redis://{host}:{port}/0'.format(
     host=os.getenv('REDIS_HOST', 'localhost'),

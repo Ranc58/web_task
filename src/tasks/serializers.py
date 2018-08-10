@@ -4,14 +4,17 @@ from rest_framework import serializers
 from tasks.models import Task
 
 
-class CreateTaskSerializer(serializers.Serializer):
-    id = serializers.IntegerField()
+class CreateTaskSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Task
+        fields = ()
 
 
 class TaskSerializer(serializers.ModelSerializer):
-    create_time = serializers.DateTimeField(format=settings.DATETIME_FORMAT)
-    start_time = serializers.DateTimeField(format=settings.DATETIME_FORMAT)
-    time_to_execute = serializers.DateTimeField(format=settings.DATETIME_FORMAT)
+    create_time = serializers.DateTimeField(format=settings.TIME_FORMAT)
+    start_time = serializers.DateTimeField(format=settings.TIME_FORMAT)
+    time_to_execute = serializers.DateTimeField(format=settings.TIME_FORMAT)
 
     class Meta:
         model = Task
