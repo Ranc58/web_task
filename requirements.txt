@@ -1,3 +1,5 @@
+-r test_requirements.txt
+
 Django==2.1
 djangorestframework==3.8.2
 psycopg2==2.7.5
