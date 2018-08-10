@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'tasks.apps.TasksConfig',
+    'celery',
+    'tasks',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +128,12 @@ STATIC_URL = '/static/'
 
 
 DATETIME_FORMAT = '%Y-%m-%dT%H:%M:%S'
+
+CELERY_BROKER_URL = 'redis://{host}:{port}/0'.format(
+    host=os.getenv('REDIS_HOST', 'localhost'),
+    port=os.getenv('REDIS_PORT', 6379)
+)
+CELERY_RESULT_BACKEND = 'redis://{host}:{port}/0'.format(
+    host=os.getenv('REDIS_HOST', 'localhost'),
+    port=os.getenv('REDIS_PORT', 6379)
+)
