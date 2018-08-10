@@ -17,7 +17,7 @@ before_install:
   - export DB_PASS=ciex
   - export DB_PORT=5432
   - export DB_HOST=localhost
-  - export REDIS_HOST=redis
+  - export REDIS_HOST=localhost
   - export REDIS_PORT=6379
   - psql -U postgres -c "CREATE USER $DB_USER PASSWORD '$DB_PASS'"
   - psql -U postgres -c "CREATE DATABASE $DB_NAME OWNER $DB_USER"
