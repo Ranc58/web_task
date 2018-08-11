@@ -9,8 +9,8 @@ from .models import Task
 
 
 @app.task
-def task_for_task(id):
-    task = Task.objects.get(id=id)
+def task_for_task(task_id):
+    task = Task.objects.get(id=task_id)
     task.start_time = datetime.now(tz=timezone.utc).time()
     task.save()
     time.sleep(random.randint(0, 10))
