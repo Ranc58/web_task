@@ -8,7 +8,7 @@ DRF api with celery support for background tasks. Maximum number of tasks to be 
 1) With docker:
     - If it need - setup postgres and redis in `env/.env` file. By default, this file is configured for use with Docker.
     - `docker-compose up --build`.
-    - Run tests `docker-compose exec app python3 manage.py test`.
+    - For run tests `docker-compose exec app python3 manage.py test`. \
     Postgres data will be saved in `postgres/pgdata`
     
 2) Without docker:
@@ -20,7 +20,7 @@ DRF api with celery support for background tasks. Maximum number of tasks to be 
     - Setup postgres and redis in `.env` file.
     - `pip3 install -r requirements.txt`
     - Run django and celery `./run_server.sh`.
-    - Run tests (from `src`) `python3 manage.py test`.
+    - For run tests (from `src`) `python3 manage.py test`.
     
 # How to use
 
