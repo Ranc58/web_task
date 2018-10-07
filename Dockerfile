@@ -9,6 +9,5 @@ RUN mkdir /src
 ADD env /src
 ADD src /src
 WORKDIR /src
-RUN pip3 install --upgrade pip
-RUN pip3 install -r requirements.txt
+RUN pip3 install --upgrade pip && pip3 install -r requirements.txt
 ENTRYPOINT ["/src/entrypoint.sh", "start"]
